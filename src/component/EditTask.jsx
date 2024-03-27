@@ -8,6 +8,8 @@ function EditTask() {
   const [priority, setPriority] = useState(edit.priority);
   const [status, setStatus] = useState(edit.status);
   const storeTask = JSON.parse(localStorage.getItem("storeTask"));
+
+  // Delete Task Function
   const deleteTask = (title) => {
     const newTask = storeTask?.filter((task) => {
       return task.title !== title?.title || task.status !== title?.status;
@@ -16,6 +18,8 @@ function EditTask() {
     localStorage.setItem("storeTask", JSON.stringify(newTask));
     setDelete("");
   };
+
+  // Edit Task Funtion
   const editTask = (Task) => {
     console.log(Task);
     const newTask = storeTask?.filter((task) => {

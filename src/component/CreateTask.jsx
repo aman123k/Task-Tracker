@@ -10,6 +10,7 @@ function CreateTask({ setCreateTask }) {
   const [team, setTeam] = useState("");
   const [assignee, setAssignee] = useState("");
 
+  // Create task funtion and also check the filed is not empty
   const createAnTask = () => {
     if (!title && !description) {
       return toast.error("Enter Title and Description");
@@ -54,6 +55,7 @@ function CreateTask({ setCreateTask }) {
       setCreateTask(false);
     }
   };
+  // Reset Task
   const resetTask = () => {
     setTeam("");
     setTitle("");

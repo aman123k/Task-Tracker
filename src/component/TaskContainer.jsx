@@ -17,12 +17,15 @@ function TaskContainer({ Header }) {
 
   useEffect(() => {
     const storeTask = JSON.parse(localStorage.getItem("storeTask"));
+
+    // Filter contant as per the status
     const newTaskFilteredByStatus = storeTask?.filter((task) => {
       return task.status === Header;
     });
 
     let filteredTasks = newTaskFilteredByStatus;
 
+    // Check if there is some input text then filter
     if (filterAssignee || filterDate || filterPriority) {
       filteredTasks = newTaskFilteredByStatus?.filter((task) => {
         const taskDate = new Date(task.date);
@@ -39,12 +42,13 @@ function TaskContainer({ Header }) {
         );
       });
     }
-
+    // set contant
     setContainerText(filteredTasks);
   }, [Header, filterAssignee, filterDate, filterPriority]);
 
   return (
     <>
+      {/* Map the contant  */}
       {containerText?.map((task, index) => {
         return (
           <section
