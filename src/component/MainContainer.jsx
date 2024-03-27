@@ -83,7 +83,7 @@ function MainContainer() {
           </div>
         </section>
 
-        {storeTask ? (
+        {storeTask && storeTask.length !== 0 ? (
           <section className=" grid grid-cols-5 max-[1050px]:grid-cols-3 gap-4 max-[850px]:flex overflow-x-scroll w-full">
             <Card Header="pending" />
             <Card Header="in progress" />
