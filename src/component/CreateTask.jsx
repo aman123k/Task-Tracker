@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IoCaretDownOutline } from "react-icons/io5";
 import { RxCrossCircled } from "react-icons/rx";
+import toast, { Toaster } from "react-hot-toast";
 
 function CreateTask({ setCreateTask }) {
   const [title, setTitle] = useState("");
@@ -10,12 +11,12 @@ function CreateTask({ setCreateTask }) {
   const [assignee, setAssignee] = useState("");
 
   const createAnTask = () => {
-    if (!team && !description) {
-      return;
+    if (!title && !description) {
+      return toast.error("Enter Title and Description");
     } else if (!priority && !team) {
-      return;
+      return toast.error("Enter priority and Team");
     } else if (!assignee) {
-      return;
+      return toast.error("Enter Assignee Person");
     } else {
       const storeTask = JSON.parse(localStorage.getItem("storeTask"));
       if (!storeTask) {
@@ -59,6 +60,7 @@ function CreateTask({ setCreateTask }) {
     setAssignee("");
     setDescription("");
     setPriority("");
+    toast.success("Contant Reset Successfully");
   };
   return (
     <>
@@ -180,6 +182,7 @@ function CreateTask({ setCreateTask }) {
         </section>
       </section>
       <div className=" w-full h-screen bg-[#5a5865] opacity-30 absolute top-0 left-0 "></div>
+      <Toaster />
     </>
   );
 }
